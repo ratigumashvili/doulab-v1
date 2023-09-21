@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-input {
+    @apply mb-4 p-3 w-full bg-transparent text-sm border border-gray-500 placeholder:text-gray-900 dark:placeholder:text-gray-200 rounded-[0.25rem] focus:outline-none;
+  }
+
+  .form-select {
+    @apply w-full mb-4 p-3 flex items-center justify-between text-sm border border-gray-500 rounded-[0.25rem];
+  }
+
+  .form-options {
+    @apply w-full p-0 m-0 absolute top-[4.7rem] z-10 list-none bg-gray-100 shadow-md dark:text-gray-900;
+  }
+
+  .form-option {
+    @apply hover:bg-gray-200 dark:hover:text-gray-900 w-full cursor-pointer p-3 text-sm transition-all;
+  }
+
+  .button {
+    @apply md:w-40 w-full p-3 rounded-[0.25rem] text-center transition-all;
+  }
+
+  .active_tab {
+    @apply font-bold bg-white rounded-[0.25rem] ring-white dark:bg-gray-800 focus:outline-none;
+  }
+
+  @media (max-width: 780) {
+    .gallery {
+      @apply w-full;
+    }
+  }
+
+  @media (max-width: 840px) {
+    .meta {
+      @apply flex flex-col;
+    }
+  }
+}
