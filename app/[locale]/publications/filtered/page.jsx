@@ -1,7 +1,6 @@
 import { getData } from "@/lib/utils";
-import Link from "next/link";
 import PublicationSearchForm from "../../components/PublicationSearchForm";
-import PublicationSearchParams from "../../components/PublicationSearchParams";
+import SearchParameters from "../../components/SearchParameters";
 
 import { useTranslations } from "next-intl";
 
@@ -48,7 +47,7 @@ const FilteredArticles = async ({ data, searchParams: query, params }) => {
 
       <PublicationSearchForm />
 
-      {query && <PublicationSearchParams query={query} />}
+      {query && <SearchParameters query={query} redirect="/publications" />}
 
       {data === undefined &&
         filteredPublications?.publications?.length === 0 && <NothingFound />}

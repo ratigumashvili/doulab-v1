@@ -1,6 +1,8 @@
 import { getData } from "@/lib/utils";
+import NothingFound from "../../components/NothingFound";
 
 import Pagination from "../../components/Pagination";
+import SearchParameters from "../../components/SearchParameters";
 import Table from "../../components/Table";
 import TableBody from "../../components/TableBody";
 
@@ -53,13 +55,9 @@ const Filtered = async ({ searchParams: query, params }) => {
 
   return (
     <>
-      {/* <h2 className="text-lg font-bold">QUERY:</h2>
-      <pre>{JSON.stringify(query, null, 2)}</pre>
+      <SearchParameters query={query} redirect="/data" />
 
-      <h2 className="text-lg font-bold">DATA:</h2>
-      <pre>{JSON.stringify(peopleConnection, null, 2)}</pre> */}
-      <pre>{JSON.stringify(query, null, 2)}</pre>
-      <h2>search params: </h2>
+      {peopleConnection.edges.length === 0 && <NothingFound />}
 
       <div className="w-full overflow-x-auto scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100">
         <Table>
