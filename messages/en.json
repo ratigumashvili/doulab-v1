@@ -6,6 +6,7 @@
     "title": "About the project"
   },
   "Data": {
+    "country": "Country",
     "place": "Place",
     "place_note": "The name of the geographical place, e.g. Tehran, Tabriz, etc.",
     "title": "Title",
@@ -109,6 +110,7 @@
   },
   "SearchParams": {
     "search_params": "Search parameters",
+    "country": "Country",
     "author": "Author",
     "title": "Title",
     "cemetery_title": "Place name",

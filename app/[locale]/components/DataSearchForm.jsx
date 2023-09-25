@@ -38,6 +38,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
     age,
     dob,
     dod,
+    country,
     place,
     cemetery_title,
     type,
@@ -68,7 +69,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
     cemetery_title && `&cemetery_title=${cemetery_title}`
   }${grave_number && `&graveNumber=${grave_number}`}${
     section && `&section=${section}`
-  }`;
+  }${country && `&country=${country}`}`;
 
   const allInputs = Object.entries(formData).map(
     ([key, entry]) => entry?.length !== 0
@@ -113,6 +114,19 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
     <>
       <form onSubmit={(e) => e.preventDefault()} onKeyDown={handleKeyPress}>
         <div className="md:grid md:grid-cols-4 md:gap-4">
+          <div className="space-y-2">
+            <div className="flex gap-2 items-center flex-nowrap">
+              <label htmlFor="country">{fields("country")}</label>
+            </div>
+            <input
+              onChange={handleInputChange}
+              value={country}
+              type="text"
+              name="country"
+              id="country"
+              className="form-input"
+            />
+          </div>
           <div className="space-y-2">
             <div className="flex gap-2 items-center flex-nowrap">
               <label htmlFor="place">{fields("place")}</label>

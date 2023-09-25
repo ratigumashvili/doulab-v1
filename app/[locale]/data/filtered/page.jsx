@@ -19,9 +19,10 @@ const Filtered = async ({ searchParams: query, params }) => {
             {name_contains: "${query?.name}"},
             {patronym_contains: "${query?.patronym}"},
             {surname_contains: "${query?.surname}"},
-            {age_in: "${query?.age}"},
-            {dob_in: "${query?.dob}"},
-            {dod_in: "${query?.dod}"},
+            {age_contains: "${query?.age}"},
+            {dob_contains: "${query?.dob}"},
+            {dod_contains: "${query?.dod}"},
+            {burrial: {country: {title_contains: "${query?.country}"}}}
             {burrial: {place: {name_contains: "${query?.place}"}}},
             {burrial: {title_contains: "${query?.cemetery_title}"}}
             {section_contains: "${query?.section}"},
