@@ -110,8 +110,6 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
   const fields = useTranslations("Data");
   const general = useTranslations("General");
 
-  console.log(typeof gender);
-
   return (
     <>
       {/* <pre>GENDER: {gender}</pre>;<pre>{JSON.stringify(formData, null, 2)}</pre> */}
