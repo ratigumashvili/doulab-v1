@@ -49,11 +49,6 @@ const Filtered = async ({ searchParams: query, params }) => {
 
   const { peopleConnection } = await getData(singleBurialData);
 
-  const firstElement = peopleConnection?.pageInfo?.startCursor;
-  const lastElement = peopleConnection?.pageInfo?.endCursor;
-  const hasNext = peopleConnection?.pageInfo?.hasNextPage;
-  const hasPreviouse = peopleConnection?.pageInfo?.hasPreviousPage;
-
   return (
     <>
       <h2 className="text-lg font-bold">QUERY:</h2>
