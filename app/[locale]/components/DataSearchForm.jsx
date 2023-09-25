@@ -14,6 +14,7 @@ import { Check, ChevronDown } from "lucide-react";
 import { preventMinus } from "@/lib/helpers";
 
 import { INITIAL_FORM_STATE, GENDERS } from "@/lib/constants";
+import AdditionalFilter from "./AdditionalFilter";
 
 const DataSearchForm = ({ burials, enscriptionLanguages }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_STATE);
@@ -26,11 +27,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
   //   enscriptionLanguages[0]
   // );
 
-  const [selectedType, setSelectedType] = useState(burials[0]);
-  const [selectedGender, setSelectedGender] = useState(GENDERS[0]);
-  const [selectedEnscLang, setSelectedEnscLang] = useState(
-    enscriptionLanguages[0]
-  );
+  const [g, setG] = useState();
 
   const router = useRouter();
 
@@ -43,10 +40,11 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
     dob,
     dod,
     place,
+    cemetery_title,
     type,
     section,
     grave_number,
-    enscription_lang,
+    // enscription_lang,
   } = formData;
 
   // const filteredRoute = `name=${name}&patronym=${patronym}&surname=${surname}&gender=${gender}&age=${age}&dob=${dob}&dod=&${dod}&place=${place}&type=${type}&section=${section}&grave_number=${grave_number}&enscription_lang=${enscription_lang}`;
@@ -68,8 +66,10 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
   }${surname && `&surname=${surname}`}${age && `&age=${age}`}${
     dob && `&dob=${dob}`
   }${dod && `&dod=${dod}`}${place && `&place=${place}`}${
-    grave_number && `&graveNumber=${grave_number}`
-  }${section && `&section=${section}`}`;
+    cemetery_title && `&cemetery_title=${cemetery_title}`
+  }${grave_number && `&graveNumber=${grave_number}`}${
+    section && `&section=${section}`
+  }`;
 
   const allInputs = Object.entries(formData).map(
     ([key, entry]) => entry?.length !== 0
@@ -79,16 +79,16 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
     allInputs.includes(true) ? setDisabled(false) : setDisabled(true);
   }, [allInputs]);
 
-  useEffect(() => {
-    setFormData((prevData) => ({
-      ...prevData,
-      gender: selectedGender?.value,
-    }));
-  }, [selectedGender]);
+  // useEffect(() => {
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     gender: selectedGender?.value,
+  //   }));
+  // }, [selectedGender]);
 
-  useEffect(() => {
-    setFormData((prevData) => ({ ...prevData, type: selectedType }));
-  }, [selectedType]);
+  // useEffect(() => {
+  //   setFormData((prevData) => ({ ...prevData, type: selectedType }));
+  // }, [selectedType]);
 
   // useEffect(() => {
   //   setFormData((prevData) => ({
@@ -110,9 +110,11 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
   const fields = useTranslations("Data");
   const general = useTranslations("General");
 
+  console.log(typeof gender);
+
   return (
     <>
-      {JSON.stringify(formData, null, 2)}
+      {/* <pre>GENDER: {gender}</pre>;<pre>{JSON.stringify(formData, null, 2)}</pre> */}
       <form onSubmit={(e) => e.preventDefault()} onKeyDown={handleKeyPress}>
         <div className="md:grid md:grid-cols-4 md:gap-4">
           <div className="space-y-2">
@@ -126,7 +128,19 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               className="form-input"
             />
           </div>
-          <div>
+          <div className="space-y-2">
+            <label htmlFor="cemetery_title">{fields("title")}</label>
+            <input
+              onChange={handleInputChange}
+              value={cemetery_title}
+              type="text"
+              name="cemetery_title"
+              id="cemetery_title"
+              className="form-input"
+            />
+          </div>
+
+          {/* <div>
             <Listbox
               value={selectedType}
               onChange={setSelectedType}
@@ -148,7 +162,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                     {burials?.map((item) => (
                       <Listbox.Option
                         key={item}
-                        value={item}
+                        value={item === null ? null : item}
                         className="form-option"
                       >
                         <span className="flex items-center justify-between">
@@ -166,7 +180,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                 </Transition>
               </div>
             </Listbox>
-          </div>
+          </div> */}
 
           <div className="space-y-2">
             <label htmlFor="section">{fields("section")}</label>
@@ -223,7 +237,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               className="form-input"
             />
           </div>
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <Listbox
               value={selectedGender}
               onChange={setSelectedGender}
@@ -267,7 +281,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                 </Transition>
               </div>
             </Listbox>
-          </div>
+          </div> */}
           <div className="space-y-2">
             <label htmlFor="age">{fields("age")}</label>
             <input
@@ -295,7 +309,9 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="dod">{fields("dod")}</label>
+            <label htmlFor="dod">
+              <div className="w-full truncate ...">{fields("dod")}</div>
+            </label>
             <input
               onChange={handleInputChange}
               onKeyPress={preventMinus}
@@ -307,8 +323,8 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               className="form-input"
             />
           </div>
-          <div className="space-y-2">
-            {/* <Listbox
+          {/* <div className="space-y-2">
+            <Listbox
               value={selectedEnscLang}
               onChange={setSelectedEnscLang}
               className="space-y-2"
@@ -348,23 +364,8 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                   </Listbox.Options>
                 </Transition>
               </div>
-            </Listbox> */}
-            <label htmlFor="enscription_lang">
-              {fields("enscription_lang")}
-            </label>
-            <select
-              name="enscription_lang"
-              id="enscription_lang"
-              className="form-input"
-              onChange={handleInputChange}
-            >
-              {enscriptionLanguages?.map((item, idx) => (
-                <option key={idx} value={item === null ? "" : item}>
-                  {item === null ? "null" : fields(item)}
-                </option>
-              ))}
-            </select>
-          </div>
+            </Listbox>
+          </div> */}
           <div className="flex gap-2 my-8 justify-end">
             <Link
               className={`
@@ -436,6 +437,11 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
           </button>
         </div> */}
       </form>
+      {/* <AdditionalFilter
+        handleInputChange={handleInputChange}
+        gender={gender}
+        type={type}
+      /> */}
     </>
   );
 };

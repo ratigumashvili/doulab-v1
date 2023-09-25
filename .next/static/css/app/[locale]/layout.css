@@ -1436,6 +1436,11 @@ video {
 .overflow-x-auto {
   overflow-x: auto;
 }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .\!whitespace-nowrap {
   white-space: nowrap !important;
 }
@@ -1486,6 +1491,10 @@ video {
 .border-gray-800 {
   --tw-border-opacity: 1;
   border-color: rgb(31 41 55 / var(--tw-border-opacity));
+}
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 .border-red-600 {
   --tw-border-opacity: 1;

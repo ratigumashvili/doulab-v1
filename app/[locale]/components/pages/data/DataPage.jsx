@@ -9,7 +9,7 @@ import DataSearchForm from "../../DataSearchForm";
 import Map from "./map";
 
 const DataPage = ({ burials, enscriptionLanguages, mapData }) => {
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const fields = useTranslations("Data");
   const pageTitle = useTranslations("Navigation");

@@ -18,17 +18,17 @@ export const BookmarksProvider = ({ children }) => {
   const general = useTranslations("General");
 
   const [bookmarks, setBookmarks] = useState(
-    typeof window === "undefined"
-      ? []
-      : JSON.parse(sessionStorage.getItem("bookmarked"))
-    // JSON.parse(sessionStorage.getItem("bookmarked")) || []
+    // typeof window === "undefined"
+    //   ? []
+    //   : JSON.parse(sessionStorage.getItem("bookmarked"))
+    JSON.parse(sessionStorage.getItem("bookmarked")) || []
   );
 
   const [isBookmarked, setIsBookmarked] = useState(
-    typeof window === "undefined"
-      ? []
-      : JSON.parse(sessionStorage.getItem("isBookmarked"))
-    // JSON.parse(sessionStorage.getItem("isBookmarked")) || []
+    // typeof window === "undefined"
+    //   ? []
+    //   : JSON.parse(sessionStorage.getItem("isBookmarked"))
+    JSON.parse(sessionStorage.getItem("isBookmarked")) || []
   );
 
   const handleAddBookmark = (record) => {
