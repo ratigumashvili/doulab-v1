@@ -15,6 +15,7 @@ import { preventMinus } from "@/lib/helpers";
 
 import { INITIAL_FORM_STATE, GENDERS } from "@/lib/constants";
 import AdditionalFilter from "./AdditionalFilter";
+import HelpPopover from "./HelpPopover";
 
 const DataSearchForm = ({ burials, enscriptionLanguages }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_STATE);
@@ -26,8 +27,6 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
   // const [selectedEnscLang, setSelectedEnscLang] = useState(
   //   enscriptionLanguages[0]
   // );
-
-  const [g, setG] = useState();
 
   const router = useRouter();
 
@@ -112,11 +111,13 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
 
   return (
     <>
-      {/* <pre>GENDER: {gender}</pre>;<pre>{JSON.stringify(formData, null, 2)}</pre> */}
       <form onSubmit={(e) => e.preventDefault()} onKeyDown={handleKeyPress}>
         <div className="md:grid md:grid-cols-4 md:gap-4">
           <div className="space-y-2">
-            <label htmlFor="place">{fields("place")}</label>
+            <div className="flex gap-2 items-center flex-nowrap">
+              <label htmlFor="place">{fields("place")}</label>
+              <HelpPopover text={fields("place_note")} />
+            </div>
             <input
               onChange={handleInputChange}
               value={place}
@@ -127,7 +128,10 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="cemetery_title">{fields("title")}</label>
+            <div className="flex gap-2 items-center flex-nowrap">
+              <label htmlFor="cemetery_title">{fields("title")}</label>{" "}
+              <HelpPopover text={fields("title_note")} />
+            </div>
             <input
               onChange={handleInputChange}
               value={cemetery_title}

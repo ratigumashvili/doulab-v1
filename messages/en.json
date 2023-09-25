@@ -7,7 +7,9 @@
   },
   "Data": {
     "place": "Place",
+    "place_note": "The name of the geographical place, e.g. Tehran, Tabriz, etc.",
     "title": "Title",
+    "title_note": "Name of burial place/cemetery, e.g. Dulab, St. Mary's Church, etc.",
     "type": "Type",
     "select_type": "Select type",
     "grave_qount": "Grave count",
@@ -102,7 +104,8 @@
     "bookmark_removed": "Record has been removed from bookmarks",
     "url": "URL",
     "copyright": "Ilia State University",
-    "institute": "Giorgi Tsereteli Iinstitute of Oriental Studies"
+    "institute": "Giorgi Tsereteli Iinstitute of Oriental Studies",
+    "mapNote": "* The map may not reflect all persons registered in the database, as for some data it is not possible to identify a specific geographic location."
   },
   "SearchParams": {
     "search_params": "Search parameters",

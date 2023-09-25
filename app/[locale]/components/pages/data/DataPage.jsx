@@ -12,6 +12,7 @@ const DataPage = ({ burials, enscriptionLanguages, mapData }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const fields = useTranslations("Data");
+  const note = useTranslations("General");
   const pageTitle = useTranslations("Navigation");
 
   return (
@@ -46,6 +47,7 @@ const DataPage = ({ burials, enscriptionLanguages, mapData }) => {
           </Tab.Panel>
           <Tab.Panel>
             <Map data={mapData} />
+            <p className="my-4 text-sm text-gray-600">{note("mapNote")}</p>
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
