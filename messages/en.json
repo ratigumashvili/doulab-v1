@@ -111,6 +111,8 @@
     "search_params": "Search parameters",
     "author": "Author",
     "title": "Title",
+    "cemetery_title": "Place name",
+    "graveNumber": "Grave number",
     "datePublished": "Date published",
     "sortBy": "Sort by",
     "published_ASC": "Date ASC",

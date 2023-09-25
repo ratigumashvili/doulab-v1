@@ -108,6 +108,8 @@
     "search_params": "ძებნის პარამეტრები",
     "author": "ავტორი",
     "title": "სახელწოდება",
+    "cemetery_title": "ადგილის სახელწოდება",
+    "graveNumber": "საფლავის ნომერი",
     "datePublished": "თარიღი",
     "sortBy": "სორტირება",
     "published_ASC": "თარიღი მზარდობით",
