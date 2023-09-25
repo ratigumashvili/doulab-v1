@@ -1,9 +1,8 @@
 {
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/publications/page": "app/[locale]/publications/page.js",
   "/[locale]/data/page": "app/[locale]/data/page.js",
-  "/[locale]/publications/filtered/page": "app/[locale]/publications/filtered/page.js",
-  "/[locale]/data/[slug]/page": "app/[locale]/data/[slug]/page.js",
-  "/[locale]/data/filtered/page": "app/[locale]/data/filtered/page.js"
+  "/[locale]/publications/page": "app/[locale]/publications/page.js",
+  "/[locale]/data/filtered/page": "app/[locale]/data/filtered/page.js",
+  "/[locale]/publications/filtered/page": "app/[locale]/publications/filtered/page.js"
 }

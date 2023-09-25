@@ -11,16 +11,6 @@
       "static/css/app/[locale]/layout.css",
       "static/chunks/app/[locale]/layout.js"
     ],
-    "/[locale]/error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/error.js"
-    ],
-    "/[locale]/loading": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/loading.js"
-    ],
     "/[locale]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -45,6 +35,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/[locale]/data/filtered/page.js"
+    ],
+    "/[locale]/error": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/error.js"
+    ],
+    "/[locale]/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[locale]/loading.js"
     ],
     "/[locale]/data/[slug]/page": [
       "static/chunks/webpack.js",

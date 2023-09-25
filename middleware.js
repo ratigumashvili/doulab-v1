@@ -2,7 +2,7 @@ import createMiddleware from "next-intl/middleware";
 
 export default createMiddleware({
   // A list of all locales that are supported
-  locales: ["ka", "en", "ru"],
+  locales: ["ka", "en"],
 
   // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
   // !! comented defaultLocale for getting active class in LanguageSwitcher

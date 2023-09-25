@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 import { Menu, Transition } from "@headlessui/react";
 
-import { LOCALES } from "@/utils/constants";
+import { LOCALES } from "@/lib/constants";
 import { LanguagesIcon } from "lucide-react";
 
 const LanguageSwitcher = ({ isOpen }) => {
