@@ -1,6 +1,8 @@
 import { getData } from "@/lib/utils";
 
 import Pagination from "../../components/Pagination";
+import Table from "../../components/Table";
+import TableBody from "../../components/TableBody";
 
 const Filtered = async ({ searchParams: query, params }) => {
   const pageSize = 10;
@@ -51,11 +53,19 @@ const Filtered = async ({ searchParams: query, params }) => {
 
   return (
     <>
-      <h2 className="text-lg font-bold">QUERY:</h2>
+      {/* <h2 className="text-lg font-bold">QUERY:</h2>
       <pre>{JSON.stringify(query, null, 2)}</pre>
 
       <h2 className="text-lg font-bold">DATA:</h2>
-      <pre>{JSON.stringify(peopleConnection, null, 2)}</pre>
+      <pre>{JSON.stringify(peopleConnection, null, 2)}</pre> */}
+      <pre>{JSON.stringify(query, null, 2)}</pre>
+      <h2>search params: </h2>
+
+      <div className="w-full overflow-x-auto scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+        <Table>
+          <TableBody records={peopleConnection?.edges} />
+        </Table>
+      </div>
 
       <Pagination query={query} data={peopleConnection} path="/data/filtered" />
     </>
