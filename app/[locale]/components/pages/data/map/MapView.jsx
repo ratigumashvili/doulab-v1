@@ -70,6 +70,14 @@ const MapView = ({ data }) => {
                 <tbody>
                   <tr>
                     <th className="border border-slate-300 bg-slate-100 p-2">
+                      {fields("country")}
+                    </th>
+                    <td className="border border-slate-300 p-2">
+                      {item?.country?.title}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="border border-slate-300 bg-slate-100 p-2">
                       {fields("place")}
                     </th>
                     <td className="border border-slate-300 p-2">

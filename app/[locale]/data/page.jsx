@@ -26,6 +26,9 @@ const Data = async () => {
   const mapData = `
     query mapData {
       burrials(locales: ${locale}) {
+        country {
+          title
+        }
         place {
           name
         }
