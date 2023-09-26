@@ -52,12 +52,12 @@ const Data = async () => {
   const typesSet = new Set();
   burialTypes?.burrials?.map((item) => typesSet.add(item.burrialType));
   const allTypes = Array.from(typesSet);
-  allTypes.unshift(null);
+  allTypes.unshift("");
 
   const enscriptionLangs = await getData(enscriptionLangsQuery);
 
   const langs = enscriptionLangs?.people
-    ?.map((ensc) => [null, ...ensc.enscriptionLang])
+    ?.map((ensc) => ["", ...ensc.enscriptionLang])
     .flat(1);
 
   const languagesSet = new Set();

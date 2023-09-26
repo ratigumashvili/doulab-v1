@@ -1278,6 +1278,9 @@ video {
 .mt-auto {
   margin-top: auto;
 }
+.ml-auto {
+  margin-left: auto;
+}
 .block {
   display: block;
 }

@@ -21,50 +21,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/[locale]/loading.js"
     ],
-    "/[locale]/publications/page": [
+    "/[locale]/data/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/publications/page.js"
-    ],
-    "/[locale]/publications/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/publications/[slug]/page.js"
-    ],
-    "/[locale]/publications/[slug]/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/publications/[slug]/layout.js"
+      "static/chunks/app/[locale]/data/page.js"
     ],
     "/[locale]/data/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/[locale]/data/loading.js"
     ],
-    "/[locale]/data/page": [
+    "/[locale]/data/filtered/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/data/page.js"
-    ],
-    "/[locale]/data/cemeteries/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/data/cemeteries/[slug]/page.js"
-    ],
-    "/[locale]/data/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/data/[slug]/page.js"
-    ],
-    "/[locale]/data/[slug]/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/data/[slug]/layout.js"
-    ],
-    "/[locale]/data/cemeteries/[slug]/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/data/cemeteries/[slug]/layout.js"
+      "static/chunks/app/[locale]/data/filtered/page.js"
     ]
   }
 }

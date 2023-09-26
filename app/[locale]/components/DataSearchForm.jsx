@@ -22,11 +22,11 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
 
   const [disabled, setDisabled] = useState(true);
 
-  // const [selectedType, setSelectedType] = useState(burials[0]);
-  // const [selectedGender, setSelectedGender] = useState(GENDERS[0]);
-  // const [selectedEnscLang, setSelectedEnscLang] = useState(
-  //   enscriptionLanguages[0]
-  // );
+  const [selectedType, setSelectedType] = useState(burials[0]);
+  const [selectedGender, setSelectedGender] = useState(GENDERS[0]);
+  const [selectedEnscLang, setSelectedEnscLang] = useState(
+    enscriptionLanguages[0]
+  );
 
   const router = useRouter();
 
@@ -44,22 +44,8 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
     type,
     section,
     grave_number,
-    // enscription_lang,
+    enscription_lang,
   } = formData;
-
-  // const filteredRoute = `name=${name}&patronym=${patronym}&surname=${surname}&gender=${gender}&age=${age}&dob=${dob}&dod=&${dod}&place=${place}&type=${type}&section=${section}&grave_number=${grave_number}&enscription_lang=${enscription_lang}`;
-
-  // const filteredRoute = `${name && `&name=${name}`}${
-  //   patronym && `&patronym=${patronym}`
-  // }${surname && `&surname=${surname}`}${age && `&age=${age}`}${
-  //   dob && `&dob=${dob}`
-  // }${dod && `&dod=${dod}`}${place && `&place=${place}`}${
-  //   grave_number && `&graveNumber=${grave_number}`
-  // }${section && `&section=${section}`}${
-  //   gender !== null ? `&gender=${gender}` : ""
-  // }${type !== null ? `&type=${type}` : ""}${
-  //   enscription_lang !== null ? `&enscription=${enscription_lang}` : ""
-  // }`;
 
   const filteredRoute = `${name && `&name=${name}`}${
     patronym && `&patronym=${patronym}`
@@ -69,7 +55,9 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
     cemetery_title && `&cemetery_title=${cemetery_title}`
   }${grave_number && `&graveNumber=${grave_number}`}${
     section && `&section=${section}`
-  }${country && `&country=${country}`}`;
+  }${country && `&country=${country}`}${gender && `&gender=${gender}`}${
+    type && `&type=${type}`
+  }${enscription_lang && `&enscriptionLang=${enscription_lang}`}`;
 
   const allInputs = Object.entries(formData).map(
     ([key, entry]) => entry?.length !== 0
@@ -79,23 +67,23 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
     allInputs.includes(true) ? setDisabled(false) : setDisabled(true);
   }, [allInputs]);
 
-  // useEffect(() => {
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     gender: selectedGender?.value,
-  //   }));
-  // }, [selectedGender]);
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      gender: selectedGender?.value,
+    }));
+  }, [selectedGender]);
 
-  // useEffect(() => {
-  //   setFormData((prevData) => ({ ...prevData, type: selectedType }));
-  // }, [selectedType]);
+  useEffect(() => {
+    setFormData((prevData) => ({ ...prevData, type: selectedType }));
+  }, [selectedType]);
 
-  // useEffect(() => {
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     enscription_lang: selectedEnscLang,
-  //   }));
-  // }, [selectedEnscLang]);
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      enscription_lang: selectedEnscLang,
+    }));
+  }, [selectedEnscLang]);
 
   const handleInputChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -156,7 +144,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
             />
           </div>
 
-          {/* <div>
+          <div>
             <Listbox
               value={selectedType}
               onChange={setSelectedType}
@@ -165,8 +153,8 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               <div className="relative">
                 <Listbox.Label>{fields("type")}</Listbox.Label>
                 <Listbox.Button className="form-select">
-                  {selectedType === null ? "null" : fields(selectedType)}{" "}
-                  <ChevronDown size={20} />
+                  {selectedType}
+                  <ChevronDown size={20} className="ml-auto" />
                 </Listbox.Button>
                 <Transition
                   as={Fragment}
@@ -178,15 +166,17 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                     {burials?.map((item) => (
                       <Listbox.Option
                         key={item}
-                        value={item === null ? null : item}
+                        value={item}
                         className="form-option"
                       >
                         <span className="flex items-center justify-between">
-                          {item === null ? "null" : fields(item)}
+                          {fields(item)}
                           <Check
                             size={20}
                             className={`${
-                              item === selectedType ? "visible" : "hidden"
+                              item === selectedType && item !== ""
+                                ? "visible"
+                                : "hidden"
                             }`}
                           />
                         </span>
@@ -196,7 +186,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                 </Transition>
               </div>
             </Listbox>
-          </div> */}
+          </div>
 
           <div className="space-y-2">
             <label htmlFor="section">{fields("section")}</label>
@@ -253,7 +243,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               className="form-input"
             />
           </div>
-          {/* <div className="space-y-2">
+          <div className="space-y-2">
             <Listbox
               value={selectedGender}
               onChange={setSelectedGender}
@@ -262,10 +252,8 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               <div className="relative">
                 <Listbox.Label>{fields("gender")}</Listbox.Label>
                 <Listbox.Button className="form-select">
-                  {selectedGender.value === null
-                    ? "null"
-                    : fields(selectedGender?.value)}{" "}
-                  <ChevronDown size={20} />
+                  {fields(selectedGender?.value)}
+                  <ChevronDown size={20} className="ml-auto" />
                 </Listbox.Button>
                 <Transition
                   as={Fragment}
@@ -277,15 +265,16 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                     {GENDERS.map((item) => (
                       <Listbox.Option
                         key={item.id}
-                        value={item}
+                        value={item !== "" && item}
                         className="form-option"
                       >
                         <span className="flex items-center justify-between">
-                          {item.value === null ? "null" : fields(item.value)}
+                          {fields(item.value)}
                           <Check
                             size={20}
                             className={`${
-                              item.value === selectedGender?.value
+                              item.value === selectedGender?.value &&
+                              item.value !== ""
                                 ? "visible"
                                 : "hidden"
                             }`}
@@ -297,7 +286,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                 </Transition>
               </div>
             </Listbox>
-          </div> */}
+          </div>
           <div className="space-y-2">
             <label htmlFor="age">{fields("age")}</label>
             <input
@@ -339,7 +328,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               className="form-input"
             />
           </div>
-          {/* <div className="space-y-2">
+          <div className="space-y-2">
             <Listbox
               value={selectedEnscLang}
               onChange={setSelectedEnscLang}
@@ -348,10 +337,8 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               <div className="relative">
                 <Listbox.Label>{fields("enscription_lang")}</Listbox.Label>
                 <Listbox.Button className="form-select">
-                  {selectedEnscLang === null
-                    ? "null"
-                    : fields(selectedEnscLang)}{" "}
-                  <ChevronDown size={20} />
+                  {fields(selectedEnscLang)}
+                  <ChevronDown size={20} className="ml-auto" />
                 </Listbox.Button>
                 <Transition
                   as={Fragment}
@@ -367,11 +354,13 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                         className="form-option"
                       >
                         <span className="flex items-center justify-between">
-                          {item === null ? "null" : fields(item)}
+                          {fields(item)}
                           <Check
                             size={20}
                             className={`${
-                              item === selectedEnscLang ? "visible" : "hidden"
+                              item === selectedType && item !== ""
+                                ? "visible"
+                                : "hidden"
                             }`}
                           />
                         </span>
@@ -381,7 +370,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                 </Transition>
               </div>
             </Listbox>
-          </div> */}
+          </div>
           <div className="flex gap-2 my-8 justify-end">
             <Link
               className={`

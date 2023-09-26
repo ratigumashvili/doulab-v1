@@ -1,9 +1,5 @@
 {
-  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/publications/page": "app/[locale]/publications/page.js",
   "/[locale]/data/page": "app/[locale]/data/page.js",
-  "/[locale]/publications/[slug]/page": "app/[locale]/publications/[slug]/page.js",
-  "/[locale]/data/[slug]/page": "app/[locale]/data/[slug]/page.js",
-  "/[locale]/data/cemeteries/[slug]/page": "app/[locale]/data/cemeteries/[slug]/page.js"
+  "/[locale]/data/filtered/page": "app/[locale]/data/filtered/page.js"
 }

@@ -109,7 +109,8 @@
     "mapNote": "* The map may not reflect all persons registered in the database, as for some data it is not possible to identify a specific geographic location."
   },
   "SearchParams": {
-    "search_params": "Search parameters",
+    "search_page_title": "Search results",
+    "search_params": "Parameters",
     "country": "Country",
     "author": "Author",
     "title": "Title",
@@ -146,6 +147,14 @@
     "female": "Female",
     "un": "Undefined",
     "church": "Church",
-    "cemetery": "Cemetery"
+    "cemetery": "Cemetery",
+    "enscriptionLang": "Enscription language",
+    "Georgian": "Georgian",
+    "Russian": "Russian",
+    "French": "French",
+    "German": "German",
+    "Armenian": "Armenian",
+    "Persian": "Persian",
+    "English": "English"
   }
 }
