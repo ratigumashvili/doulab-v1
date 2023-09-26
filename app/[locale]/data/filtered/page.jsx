@@ -14,7 +14,7 @@ const Filtered = async ({ searchParams: query, params }) => {
   const singleBurialData = `
    query myQuery {
       peopleConnection(
-        locales: ka
+        locales: ${params.locale}
         ${query?.after ? `after: "${query?.after}", first: ${pageSize}` : ""},
         ${query?.before ? `before: "${query?.before}", last: ${pageSize}` : ""}
         where: {OR: [
@@ -93,7 +93,6 @@ const Filtered = async ({ searchParams: query, params }) => {
 
   return (
     <>
-      {/* <pre>{JSON.stringify(peopleConnection, null, 2)}</pre> */}
       <SearchParameters query={query} redirect="/data" />
 
       {peopleConnection.edges.length === 0 && <NothingFound />}
