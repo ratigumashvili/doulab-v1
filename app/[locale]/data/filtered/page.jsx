@@ -9,8 +9,6 @@ import TableBody from "../../components/TableBody";
 const Filtered = async ({ searchParams: query, params }) => {
   const pageSize = 10;
 
-  console.log(query?.gender);
-
   const singleBurialData = `
    query myQuery {
       peopleConnection(
