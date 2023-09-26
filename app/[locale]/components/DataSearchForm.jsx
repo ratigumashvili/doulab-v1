@@ -14,7 +14,7 @@ import { Check, ChevronDown } from "lucide-react";
 import { preventMinus } from "@/lib/helpers";
 
 import { INITIAL_FORM_STATE, GENDERS } from "@/lib/constants";
-import AdditionalFilter from "./AdditionalFilter";
+
 import HelpPopover from "./HelpPopover";
 
 const DataSearchForm = ({ burials, enscriptionLanguages }) => {
@@ -406,47 +406,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
             </button>
           </div>
         </div>
-
-        {/* <div className="flex gap-2 my-8 justify-end">
-          <Link
-            className={`
-                button
-                bg-gray-900 
-                text-gray-200 
-                hover:bg-gray-800
-                dark:hover:bg-gray-700
-                ${
-                  disabled &&
-                  " pointer-events-none opacity-60 cursor-not-allowed"
-                }
-              `}
-            href={"/data/filtered?" + filteredRoute}
-          >
-            {general("search")}
-          </Link>
-          <button
-            disabled={disabled}
-            type="button"
-            className={`
-             button 
-              bg-red-900 
-              text-gray-200 
-              hover:bg-red-800
-              ${
-                disabled && " pointer-events-none opacity-60 cursor-not-allowed"
-              }
-              `}
-            onClick={() => setFormData(INITIAL_FORM_STATE)}
-          >
-            {general("reset")}
-          </button>
-        </div> */}
       </form>
-      {/* <AdditionalFilter
-        handleInputChange={handleInputChange}
-        gender={gender}
-        type={type}
-      /> */}
     </>
   );
 };
