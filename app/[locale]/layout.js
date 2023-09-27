@@ -8,8 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
-import Providers from "../providers/providers";
-import { BookmarksProvider } from "../providers/bookmarksProvider";
+import ThemeProviders from "../providers/themeProviders";
+import BookmarksProvider from "../providers/bookmarksProvider";
 
 const roboto = Roboto({
   subsets: ["latin", "cyrillic"],
@@ -40,7 +40,7 @@ export default async function LocaleLayout({ children, params: { locale } }) {
     <html lang={locale}>
       <body className={locale === "ka" ? noto.className : roboto.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers>
+          <ThemeProviders>
             <BookmarksProvider>
               <Header />
               <main className="max-w-7xl w-full mx-auto my-[2rem] md:my-[4.5rem] px-6 xl:px-2">
@@ -48,7 +48,7 @@ export default async function LocaleLayout({ children, params: { locale } }) {
               </main>
               <Footer />
             </BookmarksProvider>
-          </Providers>
+          </ThemeProviders>
         </NextIntlClientProvider>
       </body>
     </html>

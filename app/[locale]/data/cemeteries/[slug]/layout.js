@@ -1,4 +1,5 @@
 import { getData } from "@/lib/utils";
+import { ToastContainer } from "react-toastify";
 
 export async function generateMetadata({ params }) {
   const singleBurialMeta = `
@@ -20,7 +21,12 @@ export async function generateMetadata({ params }) {
 }
 
 const CemeteryLayout = ({ children }) => {
-  return <>{children}</>;
+  return (
+    <>
+      <ToastContainer />
+      {children}
+    </>
+  );
 };
 
 export default CemeteryLayout;

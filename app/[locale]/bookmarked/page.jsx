@@ -2,8 +2,6 @@
 
 import { useTranslations } from "next-intl";
 
-import { ToastContainer } from "react-toastify";
-
 import { useBookmarks } from "@/app/providers/bookmarksProvider";
 
 import Table from "../components/Table";
@@ -23,7 +21,6 @@ const Bookmarked = () => {
 
   return (
     <section>
-      <ToastContainer />
       <h2 className="font-bold text-[1.5em] leading-[1.3333333] mb-[1em]">
         {page_title("page_title")}
       </h2>

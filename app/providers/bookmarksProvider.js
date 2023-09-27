@@ -14,7 +14,7 @@ export const useBookmarks = () => {
   return useContext(BookmarksContext);
 };
 
-export const BookmarksProvider = ({ children }) => {
+export default function BookmarksProvider({ children }) {
   const general = useTranslations("General");
 
   const [bookmarks, setBookmarks] = useState(
@@ -63,4 +63,4 @@ export const BookmarksProvider = ({ children }) => {
       {children}
     </BookmarksContext.Provider>
   );
-};
+}
