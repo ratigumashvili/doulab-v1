@@ -4,6 +4,5 @@
   "/[locale]/about/page": "app/[locale]/about/page.js",
   "/[locale]/data/page": "app/[locale]/data/page.js",
   "/[locale]/bookmarked/page": "app/[locale]/bookmarked/page.js",
-  "/[locale]/data/filtered/page": "app/[locale]/data/filtered/page.js",
   "/[locale]/data/cemeteries/[slug]/page": "app/[locale]/data/cemeteries/[slug]/page.js"
 }

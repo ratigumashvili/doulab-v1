@@ -1,14 +1,10 @@
-import { useLocale } from "next-intl";
-
 import { getData } from "@/lib/utils";
 import HomePage from "./components/pages/home/HomePage";
 
-const Home = async () => {
-  const locale = useLocale();
-
+const Home = async ({ params }) => {
   const queryParams = `
     query aboutPage {
-    page(where: {slug: "main-page"}, locales: ${locale}) {
+    page(where: {slug: "main-page"}, locales: ${params.locale}) {
       title
       text
     }

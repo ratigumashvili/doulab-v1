@@ -1,12 +1,8 @@
-// import { useLocale } from "next-intl";
-
 import { getData } from "@/lib/utils";
 
 import DataPage from "../components/pages/data/DataPage";
 
 const Data = async ({ params }) => {
-  // const locale = useLocale();
-
   const burialTypesQuery = `
     query burialTypesQuery {
       burrials(locales: ${params.locale}) {
