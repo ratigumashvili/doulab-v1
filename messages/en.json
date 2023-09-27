@@ -32,6 +32,7 @@
     "man": "Man",
     "female": "Female",
     "undefined": "Undefined",
+    "un": "Undefined",
     "church": "Church",
     "cemetery": "Cemetery",
     "advanced_search": "Advanced Search",
@@ -78,6 +79,7 @@
     "isu": "https://iliauni.edu.ge/en/"
   },
   "General": {
+    "": "",
     "id": "ID",
     "read_more": "Read more",
     "load_more": "Load more records",
@@ -109,6 +111,7 @@
     "mapNote": "* The map may not reflect all persons registered in the database, as for some data it is not possible to identify a specific geographic location."
   },
   "SearchParams": {
+    "": "",
     "search_page_title": "Search results",
     "search_params": "Parameters",
     "country": "Country",

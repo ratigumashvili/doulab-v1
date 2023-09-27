@@ -1,15 +1,15 @@
-import { useLocale } from "next-intl";
+// import { useLocale } from "next-intl";
 
 import { getData } from "@/lib/utils";
 
 import DataPage from "../components/pages/data/DataPage";
 
-const Data = async () => {
-  const locale = useLocale();
+const Data = async ({ params }) => {
+  // const locale = useLocale();
 
   const burialTypesQuery = `
     query burialTypesQuery {
-      burrials(locales: ${locale}) {
+      burrials(locales: ${params.locale}) {
         burrialType
       }
     }
@@ -17,7 +17,7 @@ const Data = async () => {
 
   const enscriptionLangsQuery = `
     query enscriptionLangs {
-      people(locales: ${locale}) {
+      people(locales: ${params.locale}) {
         enscriptionLang
       }
     }
@@ -25,7 +25,7 @@ const Data = async () => {
 
   const mapData = `
     query mapData {
-      burrials(locales: ${locale}) {
+      burrials(locales: ${params.locale}) {
         country {
           title
         }

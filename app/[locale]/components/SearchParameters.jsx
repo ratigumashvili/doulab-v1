@@ -12,6 +12,7 @@ const SearchParameters = ({ query, redirect }) => {
   const router = useRouter();
 
   const search = useTranslations("SearchParams");
+  const data = useTranslations("Data");
 
   return (
     <>

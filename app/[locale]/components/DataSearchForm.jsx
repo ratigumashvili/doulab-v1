@@ -170,7 +170,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                         className="form-option"
                       >
                         <span className="flex items-center justify-between">
-                          {fields(item)}
+                          {item !== "" && fields(item)}
                           <Check
                             size={20}
                             className={`${
@@ -252,7 +252,8 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               <div className="relative">
                 <Listbox.Label>{fields("gender")}</Listbox.Label>
                 <Listbox.Button className="form-select">
-                  {fields(selectedGender?.value)}
+                  {selectedGender?.value !== "" &&
+                    fields(selectedGender?.value)}
                   <ChevronDown size={20} className="ml-auto" />
                 </Listbox.Button>
                 <Transition
@@ -269,7 +270,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                         className="form-option"
                       >
                         <span className="flex items-center justify-between">
-                          {fields(item.value)}
+                          {item.value !== "" && fields(item.value)}
                           <Check
                             size={20}
                             className={`${
@@ -337,7 +338,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
               <div className="relative">
                 <Listbox.Label>{fields("enscription_lang")}</Listbox.Label>
                 <Listbox.Button className="form-select">
-                  {fields(selectedEnscLang)}
+                  {selectedEnscLang !== "" && fields(selectedEnscLang)}
                   <ChevronDown size={20} className="ml-auto" />
                 </Listbox.Button>
                 <Transition
@@ -354,7 +355,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                         className="form-option"
                       >
                         <span className="flex items-center justify-between">
-                          {fields(item)}
+                          {item !== "" && fields(item)}
                           <Check
                             size={20}
                             className={`${

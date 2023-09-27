@@ -17,8 +17,6 @@ const Bookmarked = () => {
     return <h2>{general("no_bookmarks")}</h2>;
   }
 
-  console.log(bookmarks);
-
   return (
     <section>
       <h2 className="font-bold text-[1.5em] leading-[1.3333333] mb-[1em]">
