@@ -17,19 +17,17 @@ export const useBookmarks = () => {
 export default function BookmarksProvider({ children }) {
   const general = useTranslations("General");
 
-  const [bookmarks, setBookmarks] = useState(
-    // typeof window === "undefined"
-    //   ? []
-    //   : JSON.parse(sessionStorage.getItem("bookmarked"))
-    JSON.parse(sessionStorage.getItem("bookmarked")) || []
-  );
+  const isBrowser = () =>
+    typeof window !== "undefined" && window.sessionStorage;
 
-  const [isBookmarked, setIsBookmarked] = useState(
-    // typeof window === "undefined"
-    //   ? []
-    //   : JSON.parse(sessionStorage.getItem("isBookmarked"))
-    JSON.parse(sessionStorage.getItem("isBookmarked")) || []
-  );
+  const initialBookmarked =
+    isBrowser() && JSON.parse(sessionStorage.getItem("bookmarked"));
+  const initialIsBookmarked =
+    isBrowser() && JSON.parse(sessionStorage.getItem("isBookmarked"));
+
+  const [bookmarks, setBookmarks] = useState(initialBookmarked || []);
+
+  const [isBookmarked, setIsBookmarked] = useState(initialIsBookmarked || []);
 
   const handleAddBookmark = (record) => {
     if (isBookmarked?.includes(record.id)) {
@@ -47,8 +45,10 @@ export default function BookmarksProvider({ children }) {
   };
 
   useEffect(() => {
-    sessionStorage.setItem("bookmarked", JSON.stringify(bookmarks));
-    sessionStorage.setItem("isBookmarked", JSON.stringify(isBookmarked));
+    if (isBrowser()) {
+      sessionStorage.setItem("bookmarked", JSON.stringify(bookmarks));
+      sessionStorage.setItem("isBookmarked", JSON.stringify(isBookmarked));
+    }
   }, [handleAddBookmark, handleRemoveBookmark]);
 
   const value = {
