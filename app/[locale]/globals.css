@@ -7,6 +7,10 @@
     @apply mb-4 p-3 w-full bg-transparent text-sm border border-gray-500 placeholder:text-gray-900 dark:placeholder:text-gray-200 rounded-[0.25rem] focus:outline-none;
   }
 
+  .date {
+    @apply !h-[45px];
+  }
+
   .form-select {
     @apply w-full mb-4 p-3 flex items-center justify-between text-sm border border-gray-500 rounded-[0.25rem];
   }
