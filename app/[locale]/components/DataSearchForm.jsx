@@ -95,6 +95,13 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
     }
   };
 
+  const resetForm = () => {
+    setFormData(INITIAL_FORM_STATE);
+    setSelectedType(burials[0]);
+    setSelectedGender(GENDERS[0]);
+    setSelectedEnscLang(enscriptionLanguages[0]);
+  };
+
   const fields = useTranslations("Data");
   const general = useTranslations("General");
 
@@ -401,7 +408,7 @@ const DataSearchForm = ({ burials, enscriptionLanguages }) => {
                 disabled && " pointer-events-none opacity-60 cursor-not-allowed"
               }
               `}
-              onClick={() => setFormData(INITIAL_FORM_STATE)}
+              onClick={resetForm}
             >
               {general("reset")}
             </button>

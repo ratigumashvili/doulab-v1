@@ -6,6 +6,10 @@ import { useTranslations } from "next-intl";
 
 import PublicationList from "../../components/PublicationList";
 import NothingFound from "../../components/NothingFound";
+import NoItems from "../../components/NoItems";
+import Pagination from "../../components/Pagination";
+
+const pageSize = 10;
 
 const PageTitle = () => {
   const translation = useTranslations("Navigation");
@@ -18,28 +22,44 @@ const PageTitle = () => {
 
 const FilteredArticles = async ({ data, searchParams: query, params }) => {
   const queryPublicationsByParams = `
-  query publicationsByParams {
-    publications(locales: ${params?.locale}, orderBy: ${
-    query?.sortBy
-  }, where: { 
-      OR: [
-        ${query?.author && `{ author_contains_some: "${query?.author}" },`}
+    query pubs {
+      publicationsConnection(
+        locales: ${params?.locale}
+        after: ${query?.after ? `"${query?.after}" first: ${pageSize}` : null},
+        before: ${
+          query?.before ? `"${query?.before}" last: ${pageSize}` : null
+        }, 
+        orderBy: ${query?.sortBy},
+        where: { OR: [
+        ${query?.author ? `{ author_contains_some: "${query?.author}" },` : ""}
         ${
-          query?.datePublished && `{ published_in: "${query?.datePublished}" },`
+          query?.datePublished
+            ? `{ published_in: "${query?.datePublished}" },`
+            : ""
         }
-        ${query?.title && `{title_contains: "${query?.title}"}`}  
-        ] 
-      }) {
-      id
-      title
-      author
-      published
-      slug
+        ${query?.title ? `{title_contains: "${query?.title}"}` : ""}
+        ]}
+      ) {
+        edges {
+          cursor
+          node {
+            id
+            author
+            title
+            text
+          }
+        }
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
+          hasPreviousPage
+        }
+      }
     }
-  }
-`;
+  `;
 
-  const filteredPublications = await getData(queryPublicationsByParams);
+  const response = await getData(queryPublicationsByParams);
 
   return (
     <>
@@ -49,14 +69,20 @@ const FilteredArticles = async ({ data, searchParams: query, params }) => {
 
       {query && <SearchParameters query={query} redirect="/publications" />}
 
-      {data === undefined &&
-        filteredPublications?.publications?.length === 0 && <NothingFound />}
-
       {data && <PublicationList data={data} />}
 
-      {filteredPublications && (
-        <PublicationList data={filteredPublications?.publications} />
+      {response !== null && (
+        <PublicationList data={response?.publicationsConnection} />
       )}
+
+      <Pagination data={response?.publicationsConnection} query={query} />
+
+      {data === undefined || (data?.edges?.length === 0 && <NoItems />)}
+
+      {response !== null &&
+        response?.publicationsConnection?.edges?.length === 0 && (
+          <NothingFound />
+        )}
     </>
   );
 };

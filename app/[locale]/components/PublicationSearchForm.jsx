@@ -47,7 +47,11 @@ const PublicationSearchForm = () => {
 
   const router = useRouter();
 
-  const filteredRoute = `author=${author}&title=${title}&datePublished=${datePublished}&sortBy=${sort.value}`;
+  const filteredRoute = `${author && `&author=${author}`}${
+    title && `&title=${title}`
+  }${datePublished && `&datePublished=${datePublished}`}${
+    sort.value && `&sortBy=${sort.value}`
+  }`;
 
   useEffect(() => {
     setFormFields((prev) => ({ ...prev, sort_by: sort.value }));
@@ -107,7 +111,8 @@ const PublicationSearchForm = () => {
               <div className="relative">
                 <Listbox.Label>{translate("sort_by")}</Listbox.Label>
                 <Listbox.Button className="form-select">
-                  {translate(sort.value)} <ChevronDown size={20} />
+                  <span className="truncate">{translate(sort.value)}</span>{" "}
+                  <ChevronDown size={20} />
                 </Listbox.Button>
                 <Transition
                   as={Fragment}

@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import { separate } from "@/lib/helpers";
 
 import DropDown from "./DropDown";
+import GoBack from "./GoBack";
 
 const SinglePublication = ({ data }) => {
   const componentRef = useRef();
@@ -17,7 +18,10 @@ const SinglePublication = ({ data }) => {
       <div ref={componentRef} className="print:p-8">
         <div className="flex items-start justify-between">
           <h2 className="text-xl font-bold mb-4">{data?.title}</h2>
-          <DropDown title={data?.title} ref={componentRef} />
+          <div className="flex item-center gap-4">
+            <GoBack />
+            <DropDown title={data?.title} ref={componentRef} />
+          </div>
         </div>
         <p className="mb-2">
           {data?.author?.map((author, idx) => (

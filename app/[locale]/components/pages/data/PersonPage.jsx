@@ -12,6 +12,7 @@ import { ArrowLeft } from "lucide-react";
 import ImageGallery from "./ImageGallery";
 import MetaData from "./MetaData";
 import DropDown from "../../DropDown";
+import GoBack from "../../GoBack";
 
 const PersonPage = ({ data: person, images }) => {
   const router = useRouter();
@@ -28,13 +29,7 @@ const PersonPage = ({ data: person, images }) => {
         </h2>
 
         <div className="flex items-center gap-4">
-          <button
-            onClick={() => router.back()}
-            className="pb-1"
-            title={general("back")}
-          >
-            <ArrowLeft size={28} />
-          </button>
+          <GoBack />
 
           <DropDown
             title={`${person?.name}-${person?.patronym}-${person?.surname}`}
