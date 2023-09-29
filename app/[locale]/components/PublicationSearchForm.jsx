@@ -103,7 +103,7 @@ const PublicationSearchForm = () => {
               id="datePublished"
               value={datePublished}
               onChange={handleFormChange}
-              className="form-input"
+              className="form-input min-h-[19px]"
               placeholder="mm/dd/yyy"
             />
           </div>
