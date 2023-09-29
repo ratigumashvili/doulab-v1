@@ -1,13 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { useRouter } from "next/navigation";
-
-import { useTranslations } from "next-intl";
 
 import { ToastContainer } from "react-toastify";
-
-import { ArrowLeft } from "lucide-react";
 
 import ImageGallery from "./ImageGallery";
 import MetaData from "./MetaData";
@@ -15,10 +10,7 @@ import DropDown from "../../DropDown";
 import GoBack from "../../GoBack";
 
 const PersonPage = ({ data: person, images }) => {
-  const router = useRouter();
-
   const componentRef = useRef(null);
-  const general = useTranslations("General");
 
   return (
     <section>
