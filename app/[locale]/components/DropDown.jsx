@@ -26,7 +26,7 @@ const DropDown = forwardRef(({ title }, ref) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-90"
         >
-          <Menu.Items className="flex flex-col gap-2 w-max absolute top-8 right-0 bg-white dark:text-gray-900 rounded-[0.25rem] p-4 border shadow-md">
+          <Menu.Items className="flex flex-col gap-2 w-max absolute top-8 right-0 bg-white dark:text-gray-900 rounded-[0.25rem] p-4 border shadow-md z-50">
             <Menu.Item>
               <button
                 className="self-start"
