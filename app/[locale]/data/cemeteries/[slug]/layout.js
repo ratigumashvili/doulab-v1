@@ -1,6 +1,8 @@
 import { getData } from "@/lib/utils";
 import { ToastContainer } from "react-toastify";
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }) {
   const singleBurialMeta = `
      query burial {
