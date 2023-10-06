@@ -26,7 +26,9 @@ const ImageGallery = ({ images }) => {
     return item;
   });
 
-  const getCurrentImage = (index) => setCurrent(sliderImages[index]);
+  const getCurrentImage = (index) => {
+    setCurrent(sliderImages[index]);
+  };
 
   return (
     <div ref={ref} className="md:max-w-md w-full h-[450px] relative">
