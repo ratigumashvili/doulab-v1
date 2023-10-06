@@ -47,6 +47,7 @@ const FilteredArticles = async ({ data, searchParams: query, params }) => {
             author
             title
             text
+            slug
           }
         }
         pageInfo {
