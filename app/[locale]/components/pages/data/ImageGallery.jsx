@@ -59,8 +59,9 @@ const ImageGallery = ({ images }) => {
               height={750}
               alt="test"
               placeholder="blur"
-              blurDataURL="loading..."
-              className="object-contain max-h-[95vh]"
+              blurDataURL="/spinner.gif"
+              className="object-contain max-h-[95vh] transition-opacity opacity-0 duration-[3s]"
+              onLoadingComplete={(image) => image.classList.remove("opacity-0")}
             />
           </div>
         </div>
